@@ -1,2 +1,16 @@
-aralmeida.github.io
-===================
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>First Webpage</title>
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+</head>
+<body>
+	<section id='content'>
+	   <h1>Alyssa Almeida</h1>
+	   <h2>Senior in Graphic Design</h2>
+	   <p>My goals are to increase and further develop my skills as a Graphic Designer.</p>
+	</section>
+
+</body>
+</html>
