@@ -73,4 +73,73 @@ table {
 html[xmlns] .clearfix { display: block; }
 * html .clearfix { height: 1%; }
 
+ul li {
+  display: inline;
+}
 
+hr {
+	border: none;
+	height: 3px;
+	background-color: #000000;
+}
+
+#top-menu {
+	font-weight:bold;
+	font-size: 28px;
+	text-transform: uppercase;
+	font-family: Helvetica, serif;
+	text-align: center;
+}
+
+a {text-decoration: none;
+   color: #000000;}
+
+a.red1{
+    color: #ff2222;
+    
+}
+
+#header-img {text-align: center;}
+
+h1 {
+	margin-top: 15px;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 1em;
+}
+h2 {
+	font-size:11px;
+	color:rgba(192,192,192,0.9);
+	line-height:1em;  
+}
+p {
+	margin-top:15px;
+	font-size:12px;
+	line-height:1em;
+}
+article {
+	float:left;
+	font-family: Helvetica, sans-serif;
+	width:500px;
+	margin: 50px;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+#contain {
+	overflow: auto;
+	width: 100%;
+}
+ul li.left_nav {
+    display:inline-block;
+    margin:15px; 
+    float:left;
+}
+ul li.right_nav {
+    float:right;
+	margin:15px; 
+    
+}
+
+#contain2{
+ width:100%;   
+}
