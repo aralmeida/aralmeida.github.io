@@ -52,31 +52,51 @@ table {
 
 
 /* END RESET */
-h1, h2{
-	margin: 15px;
+h1 {font-size:40px;
+font-weight:bold;
+font-family:helvetica;
+text-align:center;}
+
+h2 {
+	margin: 0px;
+	margin-bottom:10px;
 	font-size: 20px;
 	font-weight: bold;
 	line-height: 1em;
-	font-family: Helvetica, sans-serif;
+	font-family: helvetica;
 }
 h5 {
-	font-size:11px;
+	font-size:16px;
 	margin: 15px;
-	color:rgba(192,192,192,0.9);
+	color:#cccccc;
 	line-height:1em;
-	font-family: Helvetica, sans-serif;
+	font-family: Helvetica;
+	text-align:center;
+	font-style: italic;
 }
-a {
+a, a:link, a:visited, a:active, a:hover {
 	font-family: Helvetica, sans-serif;
-	font-size:12px;
+	font-size:8px;
 	line-height:1em;
+	color:#ffffff;
 }
 article {
 	float:left;
 	font-family: Helvetica, sans-serif;
-	width:400px;
+	width:300px;
 	padding-top: 40px;
 	padding-left: 40px;
+	font-size:11px;
 }
 
+html { background-image:url('../yum/images/background.jpg');}
 
+#main-content { margin:0 auto;
+	width:720px;
+	padding:50px 50px;
+	background-color: #ffffff;
+	overflow:auto;}
+
+#two {margin:0 auto;
+width:720px;
+}
