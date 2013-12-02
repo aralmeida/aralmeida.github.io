@@ -5,12 +5,23 @@
 
 <title>hi.hello.alyssa.</title>
 
-<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/style2.css" />
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/effects.js"></script>
+<script type="text/javascript" src="js/hoverIntent.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/flexslider-min.js"></script>
+<script type="text/javascript" src="js/quicksand.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
 
 </head>
 
 <body>
+
 <div id="wrapper">
+
      <div id="header">
 
           <div id="logo">
@@ -18,28 +29,246 @@
           </div>
 
           <div id="navigation">
-
                <ul class="menu">
                    <li><a href="#header">HOME</a></li>
                    <li><a href="#portfolio">PORTFOLIO</a></li>
                    <li><a href="#about">ABOUT</a></li>
                    <li><a href="#contact">CONTACT</a></li>
                </ul>
-          
+               <div id="hidden_menu">
+                    <div id="hidden_items">
+                         <ul>
+                             <li><a href="#header">HOME</a></li>
+                             <li><a href="#portfolio">PORTFOLIO</a></li>
+                             <li><a href="#about">ABOUT</a></li>
+                             <li><a href="#contact">CONTACT</a></li>
+                         </ul>
+                    </div>
+               </div>
           </div>
           <div class="clear"></div>
+
+          <div id="intro"></div>
+
+     </div>
+
+     <div id="slider_wrapper">
+          <div id="slider">
+               <ul class="slides">
+                   <li><img src="images/slide.jpg" alt="" /></li>
+                   <li>
+                       <img src="images/slide2.jpg" alt="" />
+                       <p class="flex-caption">caption here</p>
+                   </li>
+                   <li><img src="images/slide3.jpg" alt="" /></li>
+                   <li><img src="images/slide4.jpg" alt="" /></li>
+               </ul>
+          </div>
+     </div>
+
+     <a href="#portfolio" class="scroll_down"></a>
+
+     <div id="portfolio">
+     
+          <div class="title">
+               <h2><span>portfolio</span></h2>
+          </div>
           
-          <div id="intro">
-               <p>HI!HELLO!ALYSSA!</p>
-               <br><img src="images/slide2.jpg" width="700" alt="" />
+          <div id="filter_wrapper">
+               <ul id="portfolioFilter">
+                   <li class="active"><a href="#" class="all">All projects</a></li>
+                   <li><a href="#" class="category1">Screen</a></li>
+                   <li><a href="#" class="category2">Print</a></li>
+                   <li><a href="#" class="category3">Photography</a></li>
+               </ul>
+          </div>
+          <div class="clear"></div>
+
+          <div class="item_container"></div>
+
+          <div id="portfolio_items">
+               <ul class="sortablePortfolio">
+
+                   <li data-id="id-1" data-type="category1 category3">
+                       <div class="item_content">
+
+                            <img src="images/portfolio.jpg" width="260" height="260" alt="" />
+
+                            <div class="hidden">
+                                 <div class="hidden_content">
+                                      <p>title here</p>
+                                 </div>
+                            </div>
+
+                       </div>
+                   </li>
+
+                   <li data-id="id-2" data-type="category3">
+                       <div class="item_content">
+
+                            <img src="images/portfolio.jpg" width="260" height="260" alt="" />
+
+                            <div class="hidden">
+                                 <div class="hidden_content">
+                                      <p>title here</p>
+                                 </div>
+                            </div>
+
+                       </div>
+                   </li>
+
+                   <li data-id="id-3" data-type="category2">
+                       <div class="item_content">
+
+                            <img src="images/portfolio.jpg" width="260" height="260" alt="" />
+
+                            <div class="hidden">
+                                 <div class="hidden_content">
+                                      <p>title here</p>
+                                 </div>
+                            </div>
+
+                       </div>
+                   </li>
+
+                   <li data-id="id-4" data-type="category1">
+                       <div class="item_content">
+
+                            <img src="images/portfolio.jpg" width="260" height="260" alt="" />
+
+                            <div class="hidden">
+                                 <div class="hidden_content">
+                                      <p>title here</p>
+                                 </div>
+                            </div>
+
+                       </div>
+                   </li>
+
+                   <li data-id="id-5" data-type="category3">
+                       <div class="item_content">
+
+                            <img src="images/portfolio.jpg" width="260" height="260" alt="" />
+
+                            <div class="hidden">
+                                 <div class="hidden_content">
+                                      <p>title here</p>
+                                 </div>
+                            </div>
+
+                       </div>
+                   </li>
+
+                   <li data-id="id-6" data-type="category2">
+                       <div class="item_content">
+
+                            <img src="images/portfolio.jpg" width="260" height="260" alt="" />
+
+                            <div class="hidden">
+                                 <div class="hidden_content">
+                                      <p>title here</p>
+                                 </div>
+                            </div>
+
+                       </div>
+                   </li>
+
+                   <li data-id="id-7" data-type="category1">
+                       <div class="item_content">
+
+                            <img src="images/portfolio.jpg" width="260" height="260" alt="" />
+
+                            <div class="hidden">
+                                 <div class="hidden_content">
+                                      <p>title here</p>
+                                 </div>
+                            </div>
+
+                       </div>
+                   </li>
+
+                   <li data-id="id-8" data-type="category2">
+                       <div class="item_content">
+
+                            <img src="images/portfolio.jpg" width="260" height="260" alt="" />
+
+                            <div class="hidden">
+                                 <div class="hidden_content">
+                                      <p>title here</p>
+                                 </div>
+                            </div>
+
+                       </div>
+                   </li>
+
+                   <li data-id="id-9" data-type="category1">
+                       <div class="item_content">
+
+                            <img src="images/portfolio.jpg" width="260" height="260" alt="" />
+
+                            <div class="hidden">
+                                 <div class="hidden_content">
+                                      <p>title here</p>
+                                 </div>
+                            </div>
+
+                       </div>
+                   </li>
+
+               </ul>
+          </div>
+     </div>
+
+     <a href="#about" class="scroll_down"></a>
+
+     <div id="about">
+     
+          <div class="title">
+               <h2><span>about me</span></h2>
+          </div>
+          
+          <div class="about_image">
+               <img src="images/about.jpg" width="260" height="260" alt="" />
           </div>
 
      </div>
-    
-     <a href="#portfolio" class="scroll_down"></a>
+
+     <a href="#contact" class="scroll_down"></a>
+     
+     <div id="contact">
+
+          <div class="title">
+               <h2><span>contact</span></h2>
+          </div>
+          
+          <div id="contact_form">
+               <input type="text" name="name" value="NAME *" id="form-name" />
+               <input type="text" name="mail" value="EMAIL ADDRESS *" id="form-mail" />
+               <textarea name='message' rows="5" cols="62" id="form-message">MESSAGE *</textarea>
+               <button type="submit" id="button" >Go</button>
+               <div id="result"></div>
+          </div>
+
+          <div id="contact_info">
+
+               <ul>
+                   <li><strong>Address:</strong> 123 Mission Hill, Boston, MA 02120</li>
+                   <li><strong>Phone:</strong> (123) 456-7890</li>
+                   <li><strong>Email:</strong> info@fakeaddress.com</li>
+               </ul>
+
+               <ul class="social_icons">
+                   <li><a href="" class="social_icon" id="tumblr"></a></li>
+                   <li><a href="" class="social_icon" id="pinterest"></a></li>
+               </ul>
+          </div>
+
+     <div class="clear"></div>
+     </div>
+
+     <a href="#header" class="scroll_top"></a>
 
 </div>
 
 </body>
-
 </html>

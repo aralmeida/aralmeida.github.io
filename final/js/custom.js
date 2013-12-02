@@ -1,0 +1,325 @@
+/*
+Table of contents:
+------------------
+                  1. Cufon font replacement
+                  2. Page scroll
+                  3. Flexslider for the home
+                  5. Portfolio: show hidden details
+                  6. Portfolio: load and show item page
+                  7. Portfolio: filtering elements
+                  8. Animate social icons
+                  9. Show/hide the secondary menu
+                  10. Notifiaction boxes
+                  11. Validate contact form
+                  12. Tool tip settings
+
+*/
+     
+$(window).load(function() {
+
+     /*  2. Page scroll
+     ==========================================*/
+     $('ul.menu li a, div#hidden_items ul li a, a.scroll_down, a.scroll_top').click(function(){
+               var id = $(this).attr("href");
+               $('html,body').stop().animate({scrollTop: $("div"+id).offset().top},'slow', function(){
+                         if ( navigator.userAgent.indexOf('iPad') != -1 ) {
+                                   var yPos = window.pageYOffset;
+                                   var $fixedElement = $('div#secondary_nav');
+                                   $fixedElement.css({ "position": "relative" });
+                                   window.scroll(0,yPos);
+                                   $fixedElement.css({ "position": "fixed" });
+                         }
+               });
+
+     return false;
+     });
+     
+     $('select#mobile_menu, div#hidden_items select#hidden_mobile_menu').change(function(){
+               var id = $(this).attr("value");
+               $('html,body').animate({scrollTop: $("div"+id).offset().top},'slow');
+
+     return false;
+     });
+
+     /*  3. Flexslider for the home
+     ==========================================*/
+     $('#slider').flexslider({
+               animation: "slide",              //String: Select your animation type, "fade" or "slide"
+               slideDirection: "horizontal",   //String: Select the sliding direction, "horizontal" or "vertical"
+               slideshow: true,                //Boolean: Animate slider automatically
+               slideshowSpeed: 7000,           //Integer: Set the speed of the slideshow cycling, in milliseconds
+               animationDuration: 600,         //Integer: Set the speed of animations, in milliseconds
+               directionNav: false,             //Boolean: Create navigation for previous/next navigation? (true/false)
+               controlNav: false,               //Boolean: Create navigation for paging control of each clide? Note: Leave true for manualControls usage
+               keyboardNav: true,              //Boolean: Allow slider navigating via keyboard left/right keys
+               mousewheel: false,              //Boolean: Allow slider navigating via mousewheel
+               prevText: "",                   //String: Set the text for the "previous" directionNav item
+               nextText: "",                   //String: Set the text for the "next" directionNav item
+               pausePlay: false,               //Boolean: Create pause/play dynamic element
+               pauseText: 'Pause',             //String: Set the text for the "pause" pausePlay item
+               playText: 'Play',               //String: Set the text for the "play" pausePlay item
+               randomize: false,               //Boolean: Randomize slide order
+               slideToStart: 0,                //Integer: The slide that the slider should start on. Array notation (0 = first slide)
+               animationLoop: true,            //Boolean: Should the animation loop? If false, directionNav will received "disable" classes at either end
+               pauseOnAction: true,            //Boolean: Pause the slideshow when interacting with control elements, highly recommended.
+               pauseOnHover: false,            //Boolean: Pause the slideshow when hovering over slider, then resume when no longer hovering
+               manualControls: "",             //Selector: Declare custom control navigation. Example would be ".flex-control-nav li" or "#tabs-nav li img", etc. The number of elements in your controlNav should match the number of slides/tabs.
+               start: function(){},            //Callback: function(slider) - Fires when the slider loads the first slide
+               before: function(){},           //Callback: function(slider) - Fires asynchronously with each slider animation
+               after: function(){},            //Callback: function(slider) - Fires after each slider animation completes
+               end: function(){}
+     });
+     
+
+     /*  5. Portfolio: show/hide details
+     ==========================================*/
+     var show_effect = 'clip'; //select the animation type: 'blind', 'clip', 'drop','explode','fade','fold','scale','slide'
+     var hide_effect = 'clip'; //select the animation type: 'blind', 'clip', 'drop','explode','fade','fold','scale','slide'
+     $('ul.sortablePortfolio li .item_content ').hoverIntent(
+               function(){ $(this).find('div.hidden').stop().show(show_effect, 200); return false; },
+               function(){ $(this).find('div.hidden').stop().hide(hide_effect, 100); return false; }
+     );
+
+
+     /*  6. Portfolio: load and show item page
+     ==========================================*/
+     $("ul.sortablePortfolio li a.information").click( function(){
+               var source = $(this).attr("href");
+               $("div#filter_wrapper").slideUp(300, function(){
+                          $('div.item_container').append('<div id="loading"></div>');
+                          $('div.item_container').load(source, function(){
+                                    $('div#loading').css("display","none");
+                                    $('div.item').slideDown(500,function(){
+                                              $('.slideshow').flexslider({controlNav: false});
+                                              $('html,body').animate({scrollTop: $("div#portfolio").offset().top},'slow');
+                                              $('div.item a.close').click( function(){
+                                                        $(this).parent('div.item').slideUp(300, function(){
+                                                                 $('div.item_container').empty();
+                                                                 $("div#filter_wrapper").slideDown(300);
+                                                        });
+                                              return false;
+                                              });
+                                    });
+
+                          });
+               });
+     return false;
+     });
+
+
+     /*  7. Portfolio: filtering elements
+     ==========================================*/
+     var $filterType = $('#filterOptions li.active a').attr('class');
+     var $holder = $('ul.sortablePortfolio');
+     var $data = $holder.clone();
+
+     $('#portfolioFilter li a').click(function(e) {
+
+               $('#portfolioFilter li').removeClass('active');
+               var $filterType = $(this).attr('class');
+               $(this).parent().addClass('active');
+
+               if ($filterType == 'all') {
+                         var $filteredData = $data.find('li');
+               } else {
+                      var $filteredData = $data.find('li[data-type=' + $filterType + ']');
+                      }
+
+               $holder.quicksand($filteredData, {
+                         duration: 800,
+                         adjustHeight: 'auto'
+               }, function() {
+                              $('ul.sortablePortfolio li .item_content ').hoverIntent(
+                                        function(){ $(this).find('div.hidden').stop().show(show_effect, 200); return false; },
+                                        function(){ $(this).find('div.hidden').stop().hide(hide_effect, 100); return false; }
+                              );
+                              var information = "Click here for more information!";
+                              var visit = "Visit the site!"
+                              $("a.information").tipTip({ delay: 100, content: information });
+                              $("a.link").tipTip({ delay: 100, content: visit });
+
+                              $('ul.sortablePortfolio li a.information').click( function(){
+                                        Cufon.refresh();
+                                        var source = $(this).attr("href");
+                                        $("div#filter_wrapper").slideUp(300, function(){
+                                                  $('div.item_container').load(source, function(){
+                                                            $('div.item').slideDown(500,function(){
+                                                                      $('.slideshow').flexslider({controlNav: false});
+                                                                      $('html,body').animate({scrollTop: $("div#portfolio").offset().top},'slow');
+                                                                      $('div.item a.close').click( function(){
+                                                                                $(this).parent('div.item').slideUp(300, function(){
+                                                                                          $('div.item_container').empty();
+                                                                                          $("div#filter_wrapper").slideDown(300);
+                                                                                });
+                                                                      return false;
+                                                                      });
+                                                            });
+                                                  });
+                                        });
+                              return false;
+                             });
+                             }
+
+               );
+               return false;
+     });
+     
+     /*  8. Animate social icons
+     ==========================================*/
+     $('#contact_info ul.social_icons li').hover(
+               
+               function(){
+               $(this).find('a').stop().animate({marginTop: "-7px"},600);
+               return false;
+               },
+               
+               function(){
+               $(this).find('a').stop().animate({marginTop: "0px"},600);
+               return false;
+               }
+     );
+
+});
+
+$(document).ready(function(){
+
+
+     /*  9. Show/hide the secondary menu
+     ==========================================*/
+     $(window).scroll(function(){
+               var pagetop = $(this).scrollTop();
+               if (pagetop >= 450) {
+                         $('div#hidden_menu').slideDown();
+               }
+               if (pagetop <= 450) {
+                         $('div#hidden_menu').css("display","none");
+               }
+     });
+
+
+     /*  11. Validate contact form
+     ==========================================*/
+     var name_value   = 'NAME *'; //default placeholder text for the name field
+     var mail_value   = 'EMAIL ADDRESS *'; //default placeholder text for the email field
+     var message_value= 'MESSAGE *'; //default place holder text for the textarea
+
+     var missing_name = 'Please state your name!'; //error message, if the name field is empty
+     var missing_mail = 'Please list your email address!'; //error message, if the mail field is empty
+     var invalid_mail = 'Oh no! Invalid email address!'; //error message, if the user's email address is invalid
+     var missing_message = 'Please write something!'; //error message, if the textarea is empty
+
+     var error_color   = '#990000'; //text color of the error messages
+     var default_color = '#333333'; //default text color of the contact form
+
+     $('input#form-name').click(function() {
+
+               var form_name = $('input#form-name').val();
+
+               if (form_name == missing_name)
+                  {
+                  $('input#form-name').css("color" , default_color);
+                  $('input#form-name').val('');
+                  }
+                  else if (form_name == name_value)
+                          {
+                          $('input#form-name').val('');
+                          $('input#form-name').css("color" , default_color);
+                          }
+
+     });
+
+     $('input#form-mail').click(function() {
+
+               var form_mail = $('input#form-mail').val();
+
+               if (form_mail == missing_mail || form_mail == invalid_mail)
+               {
+               $('input#form-mail').css("color" , default_color);
+               $('input#form-mail').val('');
+               }
+               else if (form_mail == mail_value)
+                       {
+                       $('input#form-mail').val('');
+                       $('input#form-mail').css("color" , default_color);
+                       }
+
+     });
+
+     $('textarea#form-message').click(function() {
+
+               var message_content = $('textarea#form-message').val();
+
+               if (message_content == missing_message || message_content == message_value)
+                  {
+                  $('textarea#form-message').css("color" , default_color);
+                  $('textarea#form-message').val('');
+                  }
+     });
+
+     $('#contact_form button#button').click(function() {
+
+               var name = $('input#form-name').val();
+               var email = $('input#form-mail').val();
+               var comments = $('textarea#form-message').val();
+
+               if (name == "" || name == missing_name || name == name_value)
+                  {
+                  $('input#form-name').css("color" , error_color);
+                  $('input#form-name').val(missing_name);
+                  }
+
+               if (email == "" || email == invalid_mail || email == mail_value)
+                  {
+                  $('input#form-mail').css("color" , error_color);
+                  $('input#form-mail').val(missing_mail);
+                  }
+                  
+               if (email != mail_value && email != missing_mail ) {
+                  var atpos=email.indexOf("@");
+                  var dotpos=email.lastIndexOf(".");
+                  if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length)
+                     {
+                     $('input#form-mail').css("color" , error_color);
+                     $('input#form-mail').val(invalid_mail);
+                     return false;
+                     }
+               }
+
+               if (comments == "" || comments == message_value || comments == missing_message)
+                  {
+                  $('textarea#form-message').css("color" , error_color);
+                  $('textarea#form-message').val(missing_message);
+                  }
+
+               if ( name == "" || name == missing_name || name == name_value || email == "" || email == invalid_mail || email == mail_value || email == missing_mail || comments == "" || comments == message_value || comments == missing_message ) { return false; }
+
+               var atpos=email.indexOf("@");
+               var dotpos=email.lastIndexOf(".");
+               if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length)
+                  {
+                  $('input#form-mail').css("color" , error_color);
+                  $('input#form-mail').val(invalid_mail);
+                  return false;
+                  }
+
+               $("div#contact_form input[type='text']").remove();
+               $('div#contact_form textarea').remove();
+               $('div#contact_form button').remove();
+               $('div#result').append('<div id="loading"></div>');
+
+               $.ajax({
+                         type: 'post',
+                         url: 'mail.php',
+                         data: 'name=' + name + '&email=' + email + '&comments=' + comments,
+
+                         success: function(results) {
+                                   $('div.loading').remove();
+                                   $('div#result').html(results);
+                                   $(".success a").click(function(){ $("div.success").fadeOut("slow"); return false; });
+                                   $(".error a").click(function(){ $("div.error").fadeOut("slow"); return false; });
+                         }
+               });
+
+        });//send click process ends here
+
+});
