@@ -82,7 +82,7 @@ html[xmlns] .slides {display: block;}
 #slider {background: #fff; position: relative; zoom: 1;}
 #slider .slides {zoom: 1;}
 #slider .slides > li {position: relative;}
-.flex-caption {width: 100%; height: 33px; line-height: 33px; position: absolute; left: 0%; bottom: 5%; background: #FFF; color: #414141; font-size: 17px; font-family: 'Vollkorn', serif; text-align: center; }
+.flex-caption {width: 100%; height: 33px; line-height: 33px; position: absolute; left: 0%; bottom: 5%; background: #FFF; color: #414141; font-size: 11px; font-family: Helvetica; text-transform: uppercase; font-weight: bold; text-align: center; }
 .flex-direction-nav li a {width: 68px; height: 68px; line-height: 68px; display: none; background: #FFF; position: absolute; top: 37%; cursor: pointer; border: 1px solid #232323; text-align: center; color: #232323; font-size: 28px; font-family: 'Quicksand', sans-serif; border-radius: 35px; -moz-border-radius: 35px; -webkit-border-radius: 35px; behavior: url(PIE.htc); }
 #slider:hover .flex-direction-nav li a { display: block; }
 .flex-direction-nav li .next { right: 10px; }
@@ -109,7 +109,7 @@ ul.sortablePortfolio li .item_content img { position: absolute; top: 0px; left: 
 ul.sortablePortfolio li .item_content .hidden { position: absolute; top: 0px; left: 0px; z-index: 2; display: none; width: 100%; height: 100%; border-radius: 130px; -moz-border-radius: 130px;; -webkit-border-radius: 130px; behavior: url(PIE.htc); background: url('images/overlay.png'); }
 ul.sortablePortfolio li .item_content .hidden .hidden_content { position: relative; width: 100%; height: 100%; border-radius: 130px;; -moz-border-radius: 130px; -webkit-border-radius: 130px; behavior: url(PIE.htc); }
 ul.sortablePortfolio li .item_content .hidden .hidden_content p { position: absolute; top: 48%; left: 0%; width: 100%; text-align: center; text-transform: uppercase; font-size: 15px; color: #FFF; }
-ul.sortablePortfolio li .item_content .hidden .hidden_content a.information { display: block; position: absolute; top:64%; left:33%; width: 38px; height: 38px; background: url('images/info_button.png') no-repeat; }
+ul.sortablePortfolio li .item_content .hidden .hidden_content a.information { display: block; position: absolute; top:64%; left:43%; width: 38px; height: 38px; background: url('images/info_button.png') no-repeat; }
 ul.sortablePortfolio li .item_content .hidden .hidden_content a.information:hover { background: url('images/info_button_hover.png') no-repeat; }
 ul.sortablePortfolio li .item_content .hidden .hidden_content a.link { display: block; position: absolute; top:64%; right:33%; width: 38px; height: 38px; background: url('images/link_button.png') no-repeat; }
 ul.sortablePortfolio li .item_content .hidden .hidden_content a.link:hover { background: url('images/link_button_hover.png') no-repeat; }

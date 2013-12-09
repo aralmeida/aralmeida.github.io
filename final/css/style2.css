@@ -1,5 +1,5 @@
 body {
-     font-family: verdana;
+     font-family: Helvetica;
      font-size: 13px;
      color: #666;
      background: #FFFFFF;
@@ -11,13 +11,13 @@ a, .link {
 
 h1, h2,  h3, h4, h5, h6, h1 a, h2 a,  h3 a, h4 a, h5 a, h6 a {
      color: #333;
-     font-family: serif;
+     font-family: Helvetica;
      font-weight: normal;
 }
 
 div.title h2 {
      color: #232323;
-     font-family: serif;
+     font-family: Helvetica;
 }
 
 div.title h2 span {
@@ -30,8 +30,9 @@ ul.menu {
 }
 
 ul.menu li {
-     font-size: 16px;
-     font-family: serif;
+     font-size: 11px;
+     font-family: Helvetica;
+     font-weight: bold;
 }
 
 ul.menu li a {
@@ -47,7 +48,7 @@ div#hidden_menu {
 }
 
 div#hidden_items ul li {
-     font-family: serif;
+     font-family: Helvetica;
 }
 
 div#hidden_items ul li a {
@@ -55,12 +56,12 @@ div#hidden_items ul li a {
 }
 
 #intro { 
-     font-family: serif;
+     font-family: Helvetica;
      color: #414141; 
 }
 
 ul#portfolioFilter li a {
-     font-family: serif;
+     font-family: Helvetica;
      font-size: 14px;
      text-transform: uppercase;
      color: #333;
@@ -73,27 +74,27 @@ ul#portfolioFilter li.active a {
 #about p {
      font-size: 17px; 
      color: #414141; 
-     font-family: serif;
+     font-family: Helvetica;
 }
 
 #contact_form input[type="text"], #contact_form textarea {
      font-size: 15px;
-     font-family: serif;
+     font-family: Helvetica;
      color: #333;
      border-bottom: 1px dashed #CCC;
 }
 
 #contact_form button { 
      background: #272727; 
-     font-family: verdana; 
+     font-family: Helvetica; 
      font-size: 17px; 
      color: #FFF; 
 }
 
 #contact_info p {
-     font-family: serif;
+     font-family: Helvetica;
 }
 
 #contact_info ul {
-     font-family: serif;
+     font-family: Helvetica;
 }
